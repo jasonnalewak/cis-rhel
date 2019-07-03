@@ -1,3 +1,4 @@
+---
 driver:
   name: dokken
   privileged: true # because Docker and SystemD/Upstart
@@ -22,4 +23,4 @@ suites:
   - name: default
     run_list:
     - recipe[cis-rhel::default]
-
+    
