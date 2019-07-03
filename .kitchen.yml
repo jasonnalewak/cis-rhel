@@ -18,3 +18,8 @@ platforms:
     image: dokken/centos-7
     pid_one_command: /usr/lib/systemd/systemd
 
+suites:
+  - name: default
+    run_list:
+    - recipe[cis-rhel::default]
+
