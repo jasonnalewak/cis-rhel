@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     sh 'export CHEF_LICENSE="accept-no-persist"'
-                    sh 'sudo kitchen test '
+                    sh 'KITCHEN_YAML="kitchen.dokken.yml" sudo kitchen test'
                 }
             }
         }

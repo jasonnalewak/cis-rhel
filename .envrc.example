@@ -1,3 +1,0 @@
-export AWS_KEYPAIR_NAME='dca-kitchen'
-export EC2_SSH_KEY_PATH='/path/to/id_rsa_kitchen.pem'
-export KITCHEN_YAML=.kitchen.aws.yml

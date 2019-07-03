@@ -27,10 +27,6 @@ platforms:
     driver_config:
       image_id: ami-223f945a # RHEL 7.4 (HVM)
       instance_type: t2.medium
-  - name: rhel-6
-    driver:
-      image-id: ami-7df0bd4d
-      instance_type: t2.medium
 
 suites:
   - name: aws-rhel7
@@ -48,18 +44,4 @@ suites:
             cipher: 'aes128-ctr,aes192-ctr,aes256-ctr'
       firewall:
         allow_ssh: true
-  - name: aws-rhel6
-    includes:
-      - rhel-6
-    verifier:
-      inspec_tests:
-        - test/integration/aws/rhel6/inspec # cis-rhel6-level1
-    run_list:
-      - recipe[cis-rhel::default]
-    attributes:
-      ssh-hardening:
-        ssh:
-          server:
-            cipher: 'aes128-ctr,aes192-ctr,aes256-ctr'
-      firewall:
-        allow_ssh: true
+        
