@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     sh 'export CHEF_LICENSE="accept-no-persist"'
-                    sh 'sudo kitchen test '
+                    sh 'sudo kitchen test --log-level debug'
                 }
             }
         }
