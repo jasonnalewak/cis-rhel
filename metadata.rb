@@ -1,4 +1,4 @@
-name             'cis-rhel'
+name             'cis-rhel' # ~FC078
 maintainer       'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license          'Proprietary - All Rights Reserved'

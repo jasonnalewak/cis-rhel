@@ -19,7 +19,7 @@
 
 action :harden do
   # Ensure IPv6 router advertisements are not accepted
-  sysctl_param 'net.ipv6.conf.default.accept_ra' do
+  sysctl_param 'net.ipv6.conf.default.accept_ra' do # ~FC005
     value 0
   end
   sysctl_param 'net.ipv6.conf.all.accept_ra' do
@@ -37,7 +37,7 @@ end
 
 action :disable do
   # Ensure IPv6 is disabled
-  sysctl_param 'net.ipv6.conf.all.disable_ipv6' do
+  sysctl_param 'net.ipv6.conf.all.disable_ipv6' do # ~FC005
     value 1
   end
 

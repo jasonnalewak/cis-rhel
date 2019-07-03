@@ -29,7 +29,7 @@ end
 # xccdf_org.cisecurity.benchmarks_rule_5.4.4_Ensure_default_user_umask_is_027_or_more_restrictive
 # rubocop:disable Style/RescueModifier
 %w(bashrc profile).each do |file|
-  ruby_block 'ensure default user umask is 027' do
+  ruby_block 'ensure default user umask is 027' do # ~FC022
     block do
       fe = Chef::Util::FileEdit.new("/etc/#{file}")
       fe.search_file_replace_line(/(umask )\d{1,3}/, 'umask 027')
