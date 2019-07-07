@@ -1,26 +1,36 @@
 ---
 driver:
-  name: dokken
-  privileged: true # because Docker and SystemD/Upstart
-  chef_version: 14
-  chef_license: accept-no-persist
-
-transport:
-  name: dokken
+  name: vagrant
 
 provisioner:
-  name: dokken
+  name: chef_zero
+  root_path: "/home/vagrant/kitchen" # move from /tmp
+  product_name: chef
+  product_version: 14
+  deprecations_as_errors: true
 
 verifier:
   name: inspec
+  sudo: true
 
+# See .kitchen.aws.yml for RedHat Testing
 platforms:
-- name: centos-7
-  driver:
-    image: dokken/centos-7
-    pid_one_command: /usr/lib/systemd/systemd
+- name: centos7
+  driver_config:
+    box: bento/centos-7
 
 suites:
-  - name: default
+  - name: rhel7
+    includes:
+      - centos7
+    verifier:
+      inspec_tests:
+        - test/integration/default/rhel7/inspec/controls/test.rb # cis-rhel7-level1
     run_list:
-    - recipe[cis-rhel::default]
+      - recipe[cis-rhel::default]
+      - recipe[augment::vbox]
+    attributes:
+      ssh-hardening:
+        ssh:
+          server:
+            cipher: 'aes128-ctr,aes192-ctr,aes256-ctr'
